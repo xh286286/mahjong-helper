@@ -36,7 +36,12 @@ func (p *playerInfo) printDiscards() {
 	fmt.Printf(p.name + ":")
 	for i, disTile := range p.discardTiles {
 		fmt.Printf(" ")
-		// TODO: 显示 dora, 赤宝牌
+
+		// 如果切牌的时候是宝牌，高亮打印星号
+		if p.discardTileDoraFlags[i] {
+			color.New(color.BgBlack, color.FgRed).Print('*')
+		}
+
 		bgColor := color.BgBlack
 		fgColor := color.FgWhite
 		var tile string

@@ -96,9 +96,10 @@ type playerInfo struct {
 	isNaki               bool // 是否鸣牌（暗杠不算鸣牌）
 
 	// 注意负数（自摸切）要^
-	discardTiles          []int // 该玩家的舍牌
-	latestDiscardAtGlobal int   // 该玩家最近一次舍牌在 globalDiscardTiles 中的下标，初始为 -1
-	earlyOutsideTiles     []int // 立直前的1-5巡的外侧牌
+	discardTiles          []int  // 该玩家的舍牌
+	discardTileDoraFlags  []bool // 打出时是否为宝牌
+	latestDiscardAtGlobal int    // 该玩家最近一次舍牌在 globalDiscardTiles 中的下标，初始为 -1
+	earlyOutsideTiles     []int  // 立直前的1-5巡的外侧牌
 
 	isReached  bool // 是否立直
 	canIppatsu bool // 是否有一发
@@ -777,6 +778,16 @@ func (d *roundData) analysis() error {
 			d.newDora(kanDoraIndicator)
 		}
 
+		isDora := isRedFive
+		if !isDora {
+			for _, value := range d.doraList() {
+				if discardTile == value {
+					isDora = true
+					break
+				}
+			}
+		}
+
 		player := d.players[who]
 		if isReach {
 			player.isReached = true
@@ -793,6 +804,7 @@ func (d *roundData) analysis() error {
 
 			d.globalDiscardTiles = append(d.globalDiscardTiles, discardTile)
 			player.discardTiles = append(player.discardTiles, discardTile)
+			player.discardTileDoraFlags = append(player.discardTileDoraFlags, isDora)
 			player.latestDiscardAtGlobal = len(d.globalDiscardTiles) - 1
 
 			if isRedFive {
@@ -822,6 +834,7 @@ func (d *roundData) analysis() error {
 		}
 		d.globalDiscardTiles = append(d.globalDiscardTiles, _disTile)
 		player.discardTiles = append(player.discardTiles, _disTile)
+		player.discardTileDoraFlags = append(player.discardTileDoraFlags, isDora)
 		player.latestDiscardAtGlobal = len(d.globalDiscardTiles) - 1
 
 		// 标记外侧牌
