@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/util"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
+
 	"github.com/fatih/color"
+	"github.com/xh286286/mahjong-helper/util"
+	"github.com/xh286286/mahjong-helper/util/model"
 )
 
 type DataParser interface {

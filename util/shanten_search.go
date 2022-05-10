@@ -1,8 +1,9 @@
 package util
 
 import (
-	"github.com/EndlessCheng/mahjong-helper/util/model"
 	"fmt"
+
+	"github.com/xh286286/mahjong-helper/util/model"
 )
 
 type shantenSearchNode13 struct {

@@ -2,8 +2,9 @@ package util
 
 import (
 	"testing"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
+
 	"github.com/stretchr/testify/assert"
+	"github.com/xh286286/mahjong-helper/util/model"
 )
 
 func Test_handInfo_calcFu(t *testing.T) {

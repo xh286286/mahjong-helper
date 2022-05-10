@@ -1,11 +1,12 @@
 package main
 
 import (
-	"github.com/EndlessCheng/mahjong-helper/util"
 	"fmt"
 	"strings"
+
 	"github.com/fatih/color"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
+	"github.com/xh286286/mahjong-helper/util"
+	"github.com/xh286286/mahjong-helper/util/model"
 )
 
 func simpleBestDiscardTile(playerInfo *model.PlayerInfo) int {

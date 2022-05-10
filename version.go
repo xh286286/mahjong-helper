@@ -1,10 +1,11 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
-	"fmt"
-	"encoding/json"
+
 	"github.com/fatih/color"
 )
 
@@ -40,7 +41,7 @@ func fetchLatestVersionTag() (latestVersionTag string, err error) {
 }
 
 func checkNewVersion(currentVersionTag string) {
-	const latestReleasePage = "https://github.com/EndlessCheng/mahjong-helper/releases/latest"
+	const latestReleasePage = "https://github.com/xh286286/mahjong-helper/releases/latest"
 
 	latestVersionTag, err := fetchLatestVersionTag()
 	if err != nil {

@@ -1,8 +1,9 @@
 package util
 
 import (
-	"github.com/EndlessCheng/mahjong-helper/util/model"
 	"sort"
+
+	"github.com/xh286286/mahjong-helper/util/model"
 )
 
 // 计算各张待牌的和率

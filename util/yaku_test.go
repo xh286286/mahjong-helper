@@ -1,11 +1,12 @@
 package util
 
 import (
-	"testing"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
-	"strings"
-	"github.com/stretchr/testify/assert"
 	"sort"
+	"strings"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/xh286286/mahjong-helper/util/model"
 )
 
 func calcStrYaku(humanTiles string, humanWinTile string, isTsumo bool, melds ...model.Meld) string {

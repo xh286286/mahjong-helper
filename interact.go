@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/EndlessCheng/mahjong-helper/util"
 	"fmt"
 	"os"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
+
+	"github.com/xh286286/mahjong-helper/util"
+	"github.com/xh286286/mahjong-helper/util/model"
 )
 
 func interact(humanTilesInfo *model.HumanTilesInfo) error {

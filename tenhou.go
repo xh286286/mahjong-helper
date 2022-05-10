@@ -1,15 +1,16 @@
 package main
 
 import (
-	"strings"
-	"strconv"
 	"fmt"
-	"regexp"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
-	"sort"
-	"github.com/EndlessCheng/mahjong-helper/util"
 	"net/url"
+	"regexp"
+	"sort"
+	"strconv"
+	"strings"
+
 	"github.com/fatih/color"
+	"github.com/xh286286/mahjong-helper/util"
+	"github.com/xh286286/mahjong-helper/util/model"
 )
 
 /*
