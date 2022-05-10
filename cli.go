@@ -40,9 +40,9 @@ func (p *playerInfo) printDiscards() {
 		fgColor := color.FgWhite
 		var tile string
 		if disTile >= 0 { // 手切
-			tile = util.Mahjong[disTile]
+			tile = util.MahjongZH[disTile]
 			if disTile >= 27 {
-				tile = util.MahjongU[disTile] // 关注字牌的手切
+				tile = util.MahjongZH[disTile] // 关注字牌的手切
 			}
 			if p.isNaki { // 副露
 				fgColor = getOtherDiscardAlertColor(disTile) // 高亮中张手切
@@ -53,7 +53,7 @@ func (p *playerInfo) printDiscards() {
 			}
 		} else { // 摸切
 			disTile = ^disTile
-			tile = util.Mahjong[disTile]
+			tile = util.MahjongZH[disTile]
 			fgColor = color.FgHiBlack // 暗色显示
 		}
 		color.New(bgColor, fgColor).Print(tile)
