@@ -38,7 +38,7 @@ func (p *playerInfo) printDiscards() {
 		fmt.Printf(" ")
 
 		// 如果切牌的时候是宝牌，高亮打印星号
-		if p.discardTileDoraFlags[i] {
+		if i < len(p.discardTileDoraFlags) && p.discardTileDoraFlags[i] {
 			color.New(color.BgBlack, color.FgRed).Print('*')
 		}
 
