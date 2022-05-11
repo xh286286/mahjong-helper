@@ -39,7 +39,7 @@ func (p *playerInfo) printDiscards() {
 
 		// 如果切牌的时候是宝牌，高亮打印星号
 		if i < len(p.discardTileDoraFlags) && p.discardTileDoraFlags[i] {
-			color.New(color.BgBlack, color.FgRed).Print('*')
+			color.New(color.BgBlack, color.FgRed).Print("*")
 		}
 
 		bgColor := color.BgBlack

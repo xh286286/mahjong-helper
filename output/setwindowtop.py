@@ -48,36 +48,43 @@ class totop:
     def handler(self, op, hwnd):
         op(hwnd)
 
+    def switchfocus(self):
+        if not self.topflag:  
+            self.topflag = True
+            self.gethw()
+            if self.hw: 
+                self.handler(self.force_focus, self.hw)
+        else:
+            self.topflag = False
+            self.gethw()
+            if self.hw: 
+                self.handler(self.cancel_focus, self.hw)
+                
+    def switchtransparent(self):
+        if not self.alphaflag:  
+            self.alphaflag = True
+            self.gethw()
+            if self.hw: 
+                print('make transparent')
+                self.transparent(self.hw)
+                self.title = win32gui.GetWindowText(self.hw)
+                print(self.title)
+        else:
+            self.alphaflag = False
+            self.gethw()
+            if self.hw: 
+                print('make opaque')
+                self.untransparent(self.hw)
+
+        
+
     def get_key(self):
         def fun():
-            if not self.topflag:  
-                self.topflag = True
-                self.gethw()
-                if self.hw: 
-                    self.handler(self.force_focus, self.hw)
-            else:
-                self.topflag = False
-                self.gethw()
-                if self.hw: 
-                    self.handler(self.cancel_focus, self.hw)
-
+            self.switchfocus()
 
         def fun1():
-            if not self.alphaflag:  
-                self.alphaflag = True
-                self.gethw()
-                if self.hw: 
-                    print('make transparent')
-                    self.transparent(self.hw)
-                    self.title = win32gui.GetWindowText(self.hw)
-                    print(self.title)
-            else:
-                self.alphaflag = False
-                self.gethw()
-                if self.hw: 
-                    print('make opaque')
-                    self.untransparent(self.hw)
-
+            self.switchtransparent()
+            
         keyboard.add_hotkey('alt+t', fun)
         keyboard.add_hotkey('alt+e', fun1)
 
@@ -93,4 +100,7 @@ if __name__ == '__main__':
 
 
     zd = totop()
-    zd.get_key()
+    #zd.get_key()
+    zd.switchfocus()
+    zd.switchtransparent()
+    
