@@ -7,7 +7,7 @@ import win32api
 import atexit
 
 
-filename = "C:\project\mahjong-helper\output\mahjong-helper.exe"
+filename = "mahjong-helper.exe"
 class totop:
     hw = ''
     
@@ -16,9 +16,17 @@ class totop:
 
     def gethw(self):
         def foo(hwnd,mouse):
-            if win32gui.GetWindowText(hwnd) ==  filename:
+            if    filename in win32gui.GetWindowText(hwnd) :
                 self.hw = hwnd
         win32gui.EnumWindows(foo,0)
+
+    def istransparent(self):
+        self.gethw()
+        if self.hw: 
+            lExStyle = win32gui.GetWindowLong(self.hw, win32con.GWL_EXSTYLE)
+            if lExStyle &  win32con.WS_EX_TRANSPARENT:
+                return True
+        return False
 
     def force_focus(self, hwnd):
         win32gui.SetWindowPos(hwnd, win32con.HWND_TOPMOST, 0, 0, 0, 0,
@@ -101,6 +109,10 @@ if __name__ == '__main__':
 
     zd = totop()
     #zd.get_key()
+    if zd.istransparent():
+        print('transparent')
+        zd.topflag = True
+        zd.alphaflag = True
     zd.switchfocus()
     zd.switchtransparent()
     
